@@ -7,23 +7,23 @@
 
 import SwiftUI
 
-enum pages{
-    case format
-    case record
-    case date
-    case confirm
-    case successfully
+enum pages: Int{
+    case none = 0
+    case format = 1
+    case record = 2
+    case date = 3
+    case confirm = 4
+    case successfully = 5
 }
 
 struct ContentView: View {
     
+    @State private var page: pages = .none
     
     var body: some View {
         
         VStack(alignment: .leading) {
             topPage
-            
-            title
             
         
             Spacer()
@@ -34,6 +34,7 @@ struct ContentView: View {
     }
     
     
+  
     private var topPage: some View{
         
         HStack{
@@ -51,29 +52,23 @@ struct ContentView: View {
     }
     
     private var firstPage: some View {
-        pages()
+        pages(index: .format)
     }
     private var secondPage: some View {
-        pages()
+        pages(index: .record)
     }
     private var thirdPage: some View {
-        pages()
+        pages(index: .date)
     }
     
-    private func pages() -> some View {
+    private func pages(index: pages) -> some View {
+        
         return Text("")
                     .frame(width: 35, height: 10)
-                    .background(Color.gray.opacity(0.5))
+                    .background(page.rawValue >= index.rawValue ? Color.blue: Color.gray.opacity(0.5))
                     .cornerRadius(8)
 
     }
-    
-    private var title: some View {
-        Text("Выберите формат \nприема")
-            .font(.system(size: 32))
-            .fontWeight(.semibold)
-    }
-    
     
     private var btns: some View {
         HStack{

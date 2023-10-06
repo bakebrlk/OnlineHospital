@@ -19,7 +19,10 @@ struct FirstContentView: View {
     @State private var buttonPressed: variants = .none
 
     var body: some View {
-        VStack{
+        VStack(alignment: .leading){
+            
+            title
+            
             onlineСonsultations
                 
             enrollClinic
@@ -30,6 +33,14 @@ struct FirstContentView: View {
             
         }
         .padding()
+    }
+    
+ 
+    
+    private var title: some View {
+        Text("Выберите формат \nприема")
+            .font(.system(size: 32))
+            .fontWeight(.semibold)
     }
     
     private var onlineСonsultations: some View{
