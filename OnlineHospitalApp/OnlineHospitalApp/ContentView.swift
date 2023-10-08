@@ -18,14 +18,15 @@ enum pages: Int{
 
 struct ContentView: View {
     
-    @State private var page: pages = .none
+    @State private var page: pages = .format
     
     var body: some View {
         
         VStack(alignment: .leading) {
             topPage
             
-        
+            FormatView()
+            
             Spacer()
             
             btns
@@ -65,7 +66,7 @@ struct ContentView: View {
         
         return Text("")
                     .frame(width: 35, height: 10)
-                    .background(page.rawValue >= index.rawValue ? Color.blue: Color.gray.opacity(0.5))
+                    .background(page.rawValue >= index.rawValue ? Color("Purple"): Color.gray.opacity(0.5))
                     .cornerRadius(8)
 
     }
@@ -118,7 +119,7 @@ struct ContentView: View {
             .frame(width: 194,height: 56)
             .background(
                 RoundedRectangle(cornerRadius: 30)
-                    .fill(Color.blue)
+                    .fill(Color("Purple"))
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 30)

@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B023A902AD0CB8A000E942D /* FirstContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B023A8F2AD0CB8A000E942D /* FirstContentView.swift */; };
+		8B023A902AD0CB8A000E942D /* FormatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B023A8F2AD0CB8A000E942D /* FormatView.swift */; };
+		8B31A9372AD1717200AB4D89 /* recordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B31A9362AD1717200AB4D89 /* recordView.swift */; };
+		8B4493122AD2EC770077A415 /* recordSelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4493112AD2EC770077A415 /* recordSelfView.swift */; };
+		8B4493142AD2ECEF0077A415 /* recordAnotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4493132AD2ECEF0077A415 /* recordAnotherView.swift */; };
+		8B4493162AD2FB310077A415 /* selectDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4493152AD2FB310077A415 /* selectDataView.swift */; };
+		8B4493182AD30E6B0077A415 /* finishRegestrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4493172AD30E6B0077A415 /* finishRegestrationView.swift */; };
 		8BCDDF382ACEC7DC00D09205 /* OnlineHospitalAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDF372ACEC7DC00D09205 /* OnlineHospitalAppApp.swift */; };
 		8BCDDF3A2ACEC7DC00D09205 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDF392ACEC7DC00D09205 /* ContentView.swift */; };
 		8BCDDF3C2ACEC7DD00D09205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BCDDF3B2ACEC7DD00D09205 /* Assets.xcassets */; };
@@ -15,7 +20,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8B023A8F2AD0CB8A000E942D /* FirstContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstContentView.swift; sourceTree = "<group>"; };
+		8B023A8F2AD0CB8A000E942D /* FormatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatView.swift; sourceTree = "<group>"; };
+		8B31A9362AD1717200AB4D89 /* recordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recordView.swift; sourceTree = "<group>"; };
+		8B4493112AD2EC770077A415 /* recordSelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recordSelfView.swift; sourceTree = "<group>"; };
+		8B4493132AD2ECEF0077A415 /* recordAnotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recordAnotherView.swift; sourceTree = "<group>"; };
+		8B4493152AD2FB310077A415 /* selectDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectDataView.swift; sourceTree = "<group>"; };
+		8B4493172AD30E6B0077A415 /* finishRegestrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finishRegestrationView.swift; sourceTree = "<group>"; };
 		8BCDDF342ACEC7DC00D09205 /* OnlineHospitalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlineHospitalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BCDDF372ACEC7DC00D09205 /* OnlineHospitalAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineHospitalAppApp.swift; sourceTree = "<group>"; };
 		8BCDDF392ACEC7DC00D09205 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,7 +65,12 @@
 			children = (
 				8BCDDF372ACEC7DC00D09205 /* OnlineHospitalAppApp.swift */,
 				8BCDDF392ACEC7DC00D09205 /* ContentView.swift */,
-				8B023A8F2AD0CB8A000E942D /* FirstContentView.swift */,
+				8B023A8F2AD0CB8A000E942D /* FormatView.swift */,
+				8B31A9362AD1717200AB4D89 /* recordView.swift */,
+				8B4493112AD2EC770077A415 /* recordSelfView.swift */,
+				8B4493132AD2ECEF0077A415 /* recordAnotherView.swift */,
+				8B4493152AD2FB310077A415 /* selectDataView.swift */,
+				8B4493172AD30E6B0077A415 /* finishRegestrationView.swift */,
 				8BCDDF3B2ACEC7DD00D09205 /* Assets.xcassets */,
 				8BCDDF3D2ACEC7DD00D09205 /* Preview Content */,
 			);
@@ -140,7 +155,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B023A902AD0CB8A000E942D /* FirstContentView.swift in Sources */,
+				8B023A902AD0CB8A000E942D /* FormatView.swift in Sources */,
+				8B4493122AD2EC770077A415 /* recordSelfView.swift in Sources */,
+				8B4493182AD30E6B0077A415 /* finishRegestrationView.swift in Sources */,
+				8B31A9372AD1717200AB4D89 /* recordView.swift in Sources */,
+				8B4493142AD2ECEF0077A415 /* recordAnotherView.swift in Sources */,
+				8B4493162AD2FB310077A415 /* selectDataView.swift in Sources */,
 				8BCDDF3A2ACEC7DC00D09205 /* ContentView.swift in Sources */,
 				8BCDDF382ACEC7DC00D09205 /* OnlineHospitalAppApp.swift in Sources */,
 			);
