@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct recordAnotherView: View {
-    @State private var textOfField = ["", "", "",""]
+    @State var textOfField: [String] = ["","","",""]
     
     var body: some View {
         
@@ -21,7 +21,32 @@ struct recordAnotherView: View {
             setTitleDescription(title: numberPhoneTitle, description: numberPhone)
             
             setTitleDescription(title: addressTitle, description: address)
+            
+            Spacer()
+            
+            //confirmBtn
         }
+    }
+    
+    private var confirmBtn: some View{
+        Button {
+            if(textOfField[0] != "" && textOfField[1] != "" && textOfField[2] != "" && textOfField[3] != "" ){
+                
+            }
+        } label: {
+            Text("Подтвердить")
+                .foregroundStyle(Color.black)
+                .padding()
+                .frame(maxWidth: .infinity)
+        }
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.clear)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(Color.gray, lineWidth: 1)
+        )
         .padding()
     }
     
@@ -42,6 +67,7 @@ struct recordAnotherView: View {
                 )
         }
         .padding(.bottom, 10)
+        
     }
     
     private var fullNameTitle: Text {
@@ -88,6 +114,6 @@ struct recordAnotherView: View {
     }
 }
 
-#Preview {
-    recordAnotherView()
-}
+//#Preview {
+//    recordAnotherView()
+//}

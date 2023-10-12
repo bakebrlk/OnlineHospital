@@ -7,16 +7,11 @@
 
 import SwiftUI
 
-private enum variants{
-    case none
-    case onlineСonsultations
-    case enrollClinic
-    case callToTheHouse
-}
+
 
 struct FormatView: View {
     
-    @State private var buttonPressed: variants = .none
+    @Binding var buttonPressed: variants
 
     var body: some View {
         VStack(alignment: .leading){
@@ -32,7 +27,7 @@ struct FormatView: View {
                 .padding(.top)
             
         }
-        .padding()
+        
     }
     
  
@@ -44,15 +39,15 @@ struct FormatView: View {
     }
     
     private var onlineСonsultations: some View{
-        functional(title: "Онлайн-консультация", description: "Врач созвонится с вами и проведет консультацию в приложении.", variant: .onlineСonsultations)
+        functional(title: "Онлайн-консультация", description: "Врач созвонится с вами и проведет консультацию в приложении.", variant: .online)
     }
     
     private var enrollClinic: some View{
-        functional(title: "Записаться в клинику", description: "Врач будет ждать вас в своем кабинете в клинике.", variant: .enrollClinic)
+        functional(title: "Записаться в клинику", description: "Врач будет ждать вас в своем кабинете в клинике.", variant: .offline)
     }
     
     private var callToTheHouse: some View{
-        functional(title: "Вызвать на дом", description: "Врач сам приедет к вам домой в указанное время и дату.", variant: .callToTheHouse)
+        functional(title: "Вызвать на дом", description: "Врач сам приедет к вам домой в указанное время и дату.", variant: .home)
     }
     
         
@@ -96,6 +91,6 @@ struct FormatView: View {
     }
 }
 
-#Preview {
-    FormatView()
-}
+//#Preview {
+//    FormatView()
+//}

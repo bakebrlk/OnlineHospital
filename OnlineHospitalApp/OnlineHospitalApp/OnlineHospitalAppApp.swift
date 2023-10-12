@@ -11,7 +11,10 @@ import SwiftUI
 struct OnlineHospitalAppApp: App {
     var body: some Scene {
         WindowGroup {
-            selectDataView()
+            NavigationView{
+                ContentView()
+            }
+            .navigationBarBackButtonHidden(true)
         }
     }
 }

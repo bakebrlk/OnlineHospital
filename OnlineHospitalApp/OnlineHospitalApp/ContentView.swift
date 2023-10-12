@@ -16,17 +16,33 @@ enum pages: Int{
     case successfully = 5
 }
 
+enum variants: String{
+    case none
+    case online
+    case offline
+    case home
+}
+
 struct ContentView: View {
     
     @State private var page: pages = .format
+    @State private var formatConsultation: variants = .none
     
     var body: some View {
-        
         VStack(alignment: .leading) {
             topPage
             
-            recordView()
-            
+            if(page == .format){
+                FormatView(buttonPressed: $formatConsultation)
+            }else if(page == .record){
+                recordView()
+            }else if(page == .date){
+                selectDataView()
+            }else if(page == .confirm){
+                confirmView()
+            }else if(page == .successfully){
+                finishRegestrationView()
+            }
             Spacer()
             
             btns
@@ -82,40 +98,68 @@ struct ContentView: View {
     }
     
     private var btnBack: some View{
-        Button(action: {
-            print("Back")
-            
-        }, label: {
-            HStack{
-                Image(systemName: "arrowshape.backward.fill")
-                    .foregroundColor(.black)
-                Text("Назад")
-                    .foregroundStyle(Color.black)
-                    .font(.system(size: 18))
-                    .fontWeight(.bold)
-            }
-        })
-        .frame(width: 114,height: 56)
-        .background(
-            RoundedRectangle(cornerRadius: 30)
-                .fill(Color.clear)
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 30)
-                .stroke(Color.gray, lineWidth: 2)
-        )
-      
-    }
+        
+            Button(action: {
+                print("Back")
+                
+                if(page == .record){
+                    page = .format
+                }else if(page == .date){
+                    page = .record
+                }else if(page == .confirm){
+                    page = .date
+                }else if(page == .successfully){
+                    page = .confirm
+                }
+                
+            }, label: {
+                HStack{
+                    Image(systemName: "arrowshape.backward.fill")
+                        .foregroundColor(.black)
+                    Text("Назад")
+                        .foregroundStyle(Color.black)
+                        .font(.system(size: 18))
+                        .fontWeight(.bold)
+                }
+            })
+            .frame(width: 114,height: 56)
+            .background(
+                RoundedRectangle(cornerRadius: 30)
+                    .fill(Color.clear)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 30)
+                    .stroke(Color.gray, lineWidth: 2)
+            )
+        }
     
     private var btnNext: some View {
-        Button(action: {
-            print("next")
-        }, label: {
-            Text("Дальше")
-                .foregroundStyle(Color.white)
-                .font(.system(size: 18))
-                .fontWeight(.bold)
-        })
+            Button(action: {
+                if(page == .format){
+                    page = .record
+                }else if(page == .record){
+                    page = .date
+                }else if(page == .date){
+                    page = .confirm
+                }else if(page == .confirm){
+                    page = .successfully
+                }
+            }, label: {
+                if(page == .confirm){
+                    NavigationLink(destination: finishRegestrationView().navigationBarHidden(true)){
+                        Text("Дальше")
+                            .foregroundStyle(Color.white)
+                            .font(.system(size: 18))
+                            .fontWeight(.bold)
+                    }
+                    
+                }else{
+                    Text("Дальше")
+                        .foregroundStyle(Color.white)
+                        .font(.system(size: 18))
+                        .fontWeight(.bold)
+                }
+            })
             .frame(width: 194,height: 56)
             .background(
                 RoundedRectangle(cornerRadius: 30)
@@ -125,7 +169,7 @@ struct ContentView: View {
                 RoundedRectangle(cornerRadius: 30)
                     .stroke(Color.gray, lineWidth: 2)
             )
-    }
+        }
     
 
 }

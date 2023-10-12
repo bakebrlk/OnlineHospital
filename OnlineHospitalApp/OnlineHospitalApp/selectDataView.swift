@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-private enum variants: String{
-    case online
-    case offline
-}
-
 struct selectDataView: View {
     
     @State private var format: variants = .online
@@ -27,9 +22,7 @@ struct selectDataView: View {
             title
             
             warning
-            
-            selectFormat
-            
+                    
             ZStack{
                 ScrollView{
                     ForEach(dataDateOnline.posts.slots, id: \.self){ data in
@@ -91,14 +84,12 @@ struct selectDataView: View {
                 }
             }
         }
-        .padding()
     }
     
     private var title: some View {
         Text("Выберите дату и время")
             .font(.system(size: 38))
             .fontWeight(.semibold)
-            .padding()
         
     }
     
@@ -129,7 +120,6 @@ struct selectDataView: View {
         .frame(maxWidth: .infinity)
         .background(Color("beige"))
         .cornerRadius(16)
-        .padding()
     }
     
     private func dateFormat(dateOfData: String) -> String {
@@ -181,50 +171,6 @@ struct selectDataView: View {
         .background(self.id == id ? Color("MyCustomPurple") : Color.blue.opacity(0.06))
         .cornerRadius(16)
     }
-    
-    
-     private var selectFormat : some View  {
-         HStack{
-             onlineBtn
-             offlineBtn
-         }
-         .background(
-             RoundedRectangle(cornerRadius: 16)
-                 .fill(Color.clear)
-         )
-         .overlay(
-             RoundedRectangle(cornerRadius: 16)
-                 .stroke(Color.gray, lineWidth: 1)
-         )
-         .padding()
-     }
-    
-
-    private var onlineBtn: some View {
-        variantBtns(text: "Онлайн", index: .online)
-    }
-    
-    private var offlineBtn: some View {
-        variantBtns(text: "Оффлайн", index: .offline)
-    }
-    
-    private func variantBtns(text: String, index: variants) -> some View{
-        return Button(action: {
-            format = index
-        }, label: {
-            Text(text)
-                .frame(alignment: .center)
-                .font(.system(size: 16, weight: .bold))
-                .foregroundColor(format == index ? .white : .black)
-                .padding()
-                .frame(maxWidth: .infinity)
-        })
-        .background(format == index ? Color.blue : Color.white)
-        .cornerRadius(16)
-        .frame(maxWidth: .infinity)
-        .padding(5)
-    }
-    
     
 }
 

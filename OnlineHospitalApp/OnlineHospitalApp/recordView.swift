@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-private enum variants{
+private enum variantsRecord{
     case mySelf
     case Another
 }
 
 struct recordView: View {
-    @State private var checkBtn: variants = .mySelf
+    @State private var checkBtn: variantsRecord = .mySelf
     
     var body: some View {
         
@@ -52,7 +52,6 @@ struct recordView: View {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(Color.gray, lineWidth: 1)
         )
-        .padding()
     }
     
     private var mySelfBtn: some View {
@@ -63,7 +62,7 @@ struct recordView: View {
         variantBtns(text: "Другого", index: .Another)
     }
     
-    private func variantBtns(text: String, index: variants) -> some View{
+    private func variantBtns(text: String, index: variantsRecord) -> some View{
         return Button(action: {
             checkBtn = index
         }, label: {

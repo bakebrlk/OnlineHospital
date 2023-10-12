@@ -18,6 +18,7 @@
 		8BCDDF3A2ACEC7DC00D09205 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDF392ACEC7DC00D09205 /* ContentView.swift */; };
 		8BCDDF3C2ACEC7DD00D09205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BCDDF3B2ACEC7DD00D09205 /* Assets.xcassets */; };
 		8BCDDF3F2ACEC7DD00D09205 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BCDDF3E2ACEC7DD00D09205 /* Preview Assets.xcassets */; };
+		8BE0F86F2AD878EE00AC8F14 /* confirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE0F86E2AD878EE00AC8F14 /* confirmView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		8BCDDF392ACEC7DC00D09205 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8BCDDF3B2ACEC7DD00D09205 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BCDDF3E2ACEC7DD00D09205 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8BE0F86E2AD878EE00AC8F14 /* confirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				8B4493112AD2EC770077A415 /* recordSelfView.swift */,
 				8B4493132AD2ECEF0077A415 /* recordAnotherView.swift */,
 				8B4493152AD2FB310077A415 /* selectDataView.swift */,
+				8BE0F86E2AD878EE00AC8F14 /* confirmView.swift */,
 				8B4493172AD30E6B0077A415 /* finishRegestrationView.swift */,
 				8B4AA5F12AD6A7D20013D991 /* Posts.swift */,
 				8BCDDF3B2ACEC7DD00D09205 /* Assets.xcassets */,
@@ -162,6 +165,7 @@
 				8B023A902AD0CB8A000E942D /* FormatView.swift in Sources */,
 				8B4493122AD2EC770077A415 /* recordSelfView.swift in Sources */,
 				8B4493182AD30E6B0077A415 /* finishRegestrationView.swift in Sources */,
+				8BE0F86F2AD878EE00AC8F14 /* confirmView.swift in Sources */,
 				8B31A9372AD1717200AB4D89 /* recordView.swift in Sources */,
 				8B4493142AD2ECEF0077A415 /* recordAnotherView.swift in Sources */,
 				8B4493162AD2FB310077A415 /* selectDataView.swift in Sources */,
