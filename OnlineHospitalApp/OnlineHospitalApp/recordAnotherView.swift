@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct recordAnotherView: View {
-    @State var textOfField: [String] = ["","","",""]
+    @Binding var infoClient: [String]
+    @State var infoAnother = ["", "", "", ""]
     
     var body: some View {
         
@@ -24,30 +25,18 @@ struct recordAnotherView: View {
             
             Spacer()
             
-            //confirmBtn
         }
     }
     
-    private var confirmBtn: some View{
-        Button {
-            if(textOfField[0] != "" && textOfField[1] != "" && textOfField[2] != "" && textOfField[3] != "" ){
-                
-            }
-        } label: {
-            Text("Подтвердить")
-                .foregroundStyle(Color.black)
-                .padding()
-                .frame(maxWidth: .infinity)
+    public func checkInfoClient() -> Bool{
+        if(infoAnother[0] != "" && infoAnother[1] != "" && infoAnother[2] != "" && infoAnother[3] != "" ){
+            infoClient[0] = infoAnother[0]
+            infoClient[1] = infoAnother[1]
+            infoClient[2] = infoAnother[2]
+            infoClient[3] = infoAnother[3]
+            return true
         }
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color.clear)
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.gray, lineWidth: 1)
-        )
-        .padding()
+        return false
     }
     
     private func setTitleDescription(title: Text, description: TextField<some View>) -> some View{
@@ -69,6 +58,8 @@ struct recordAnotherView: View {
         .padding(.bottom, 10)
         
     }
+    
+    
     
     private var fullNameTitle: Text {
         info(text: "Имя и фамилия:")
@@ -104,7 +95,7 @@ struct recordAnotherView: View {
     
     
     private func infoDescription(text: String, index: Int) -> TextField<some View>{
-        TextField(text ,text: $textOfField[index])
+        TextField(text ,text: $infoClient[index])
     }
     
     private func info(text: String) -> Text{

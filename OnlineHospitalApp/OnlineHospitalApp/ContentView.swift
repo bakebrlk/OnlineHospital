@@ -23,10 +23,17 @@ enum variants: String{
     case home
 }
 
+enum variantsRecord{
+    case mySelf
+    case Another
+}
+
 struct ContentView: View {
     
     @State private var page: pages = .format
     @State private var formatConsultation: variants = .none
+    @State private var formatClient: variantsRecord = .mySelf
+    @State private var infoClient = ["Иванов Иван","041115486195","+7 707 748 4815","ул. Гани Иляева 15"]
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -35,7 +42,7 @@ struct ContentView: View {
             if(page == .format){
                 FormatView(buttonPressed: $formatConsultation)
             }else if(page == .record){
-                recordView()
+                recordView(checkBtn: $formatClient, infoClient: $infoClient)
             }else if(page == .date){
                 selectDataView()
             }else if(page == .confirm){
@@ -138,6 +145,8 @@ struct ContentView: View {
                 if(page == .format){
                     page = .record
                 }else if(page == .record){
+                    print(infoClient)
+                    
                     page = .date
                 }else if(page == .date){
                     page = .confirm

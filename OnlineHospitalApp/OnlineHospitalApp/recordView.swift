@@ -7,13 +7,9 @@
 
 import SwiftUI
 
-private enum variantsRecord{
-    case mySelf
-    case Another
-}
-
 struct recordView: View {
-    @State private var checkBtn: variantsRecord = .mySelf
+    @Binding var checkBtn: variantsRecord
+    @Binding var infoClient: [String]
     
     var body: some View {
         
@@ -22,9 +18,9 @@ struct recordView: View {
             HorizontalBtns
                 
             ZStack(alignment: .top){
-                recordSelfView()
+                recordSelfView(infoClient: $infoClient)
                     .opacity(checkBtn == .mySelf ? 1 : 0)
-                recordAnotherView()
+                recordAnotherView(infoClient: $infoClient)
                     .opacity(checkBtn == .Another ? 1 : 0)
             }
 
@@ -82,6 +78,6 @@ struct recordView: View {
     
 }
 
-#Preview {
-    recordView()
-}
+//#Preview {
+//    recordView()
+//}

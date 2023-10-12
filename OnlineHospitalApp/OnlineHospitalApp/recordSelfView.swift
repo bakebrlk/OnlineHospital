@@ -9,13 +9,8 @@ import SwiftUI
 
 struct recordSelfView: View {
     
-    @State private var textInfo = ["","","",""]
+    @Binding var infoClient: [String]
     
-    init(){}
-    
-    init(fullName: String, iin: String, numberPhone: String, address: String){
-        
-    }
     var body: some View {
         
         VStack(alignment: .leading){
@@ -35,7 +30,7 @@ struct recordSelfView: View {
     }
     
     private var fullName: Text {
-        info(text: textInfo[0] == "" ? "Иванов Иван" : textInfo[0], font: .medium)
+        info(text: infoClient[0], font: .medium)
     }
     
     private var iinTitle: Text {
@@ -43,7 +38,7 @@ struct recordSelfView: View {
     }
     
     private var iin: Text {
-        info(text: textInfo[1] == "" ? "041115486195" : textInfo[1], font: .medium)
+        info(text: infoClient[1], font: .medium)
     }
     
     private var numberPhoneTitle: Text{
@@ -51,7 +46,7 @@ struct recordSelfView: View {
     }
     
     private var numberPhone: Text {
-        info(text: textInfo[2] == "" ? "+7 707 748 4815" : textInfo[2], font: .medium)
+        info(text: infoClient[2], font: .medium)
     }
     
     private var addressTitle: Text {
@@ -59,7 +54,7 @@ struct recordSelfView: View {
     }
     
     private var address: Text {
-        info(text: textInfo[3] == "" ? "ул. Гани Иляева 15" : textInfo[3], font: .medium)
+        info(text: infoClient[3], font: .medium)
     }
     
     private func verticalInfo(title: Text, description: Text) -> some View {
