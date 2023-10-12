@@ -13,6 +13,7 @@
 		8B4493142AD2ECEF0077A415 /* recordAnotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4493132AD2ECEF0077A415 /* recordAnotherView.swift */; };
 		8B4493162AD2FB310077A415 /* selectDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4493152AD2FB310077A415 /* selectDataView.swift */; };
 		8B4493182AD30E6B0077A415 /* finishRegestrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4493172AD30E6B0077A415 /* finishRegestrationView.swift */; };
+		8B4AA5F22AD6A7D20013D991 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4AA5F12AD6A7D20013D991 /* Posts.swift */; };
 		8BCDDF382ACEC7DC00D09205 /* OnlineHospitalAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDF372ACEC7DC00D09205 /* OnlineHospitalAppApp.swift */; };
 		8BCDDF3A2ACEC7DC00D09205 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDF392ACEC7DC00D09205 /* ContentView.swift */; };
 		8BCDDF3C2ACEC7DD00D09205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BCDDF3B2ACEC7DD00D09205 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		8B4493132AD2ECEF0077A415 /* recordAnotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recordAnotherView.swift; sourceTree = "<group>"; };
 		8B4493152AD2FB310077A415 /* selectDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectDataView.swift; sourceTree = "<group>"; };
 		8B4493172AD30E6B0077A415 /* finishRegestrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finishRegestrationView.swift; sourceTree = "<group>"; };
+		8B4AA5F12AD6A7D20013D991 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		8BCDDF342ACEC7DC00D09205 /* OnlineHospitalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlineHospitalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BCDDF372ACEC7DC00D09205 /* OnlineHospitalAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineHospitalAppApp.swift; sourceTree = "<group>"; };
 		8BCDDF392ACEC7DC00D09205 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				8B4493132AD2ECEF0077A415 /* recordAnotherView.swift */,
 				8B4493152AD2FB310077A415 /* selectDataView.swift */,
 				8B4493172AD30E6B0077A415 /* finishRegestrationView.swift */,
+				8B4AA5F12AD6A7D20013D991 /* Posts.swift */,
 				8BCDDF3B2ACEC7DD00D09205 /* Assets.xcassets */,
 				8BCDDF3D2ACEC7DD00D09205 /* Preview Content */,
 			);
@@ -127,6 +130,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 8BCDDF2B2ACEC7DC00D09205;
 			productRefGroup = 8BCDDF352ACEC7DC00D09205 /* Products */;
@@ -162,6 +166,7 @@
 				8B4493142AD2ECEF0077A415 /* recordAnotherView.swift in Sources */,
 				8B4493162AD2FB310077A415 /* selectDataView.swift in Sources */,
 				8BCDDF3A2ACEC7DC00D09205 /* ContentView.swift in Sources */,
+				8B4AA5F22AD6A7D20013D991 /* Posts.swift in Sources */,
 				8BCDDF382ACEC7DC00D09205 /* OnlineHospitalAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +307,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -331,6 +337,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -8,24 +8,65 @@
 import SwiftUI
 
 struct selectDataView: View {
+
     
-    private let times: [[String]] = [["11:00", "12:30","15:00", "16:30"], ["9:00", "9:30", "10:00", "10:30", "11:00", "11:30"]]
-    
-    private let prices: [[String]] = [["4000T", "3800T", "3700т", "3500T"]]
-    
+    @StateObject private var dataDate = PostViewModel()
+    @State private var id: Int = -1
+
     var body: some View {
+       
+        
         VStack(alignment: .leading){
             title
-            
-            Preduprejdenia
-            
-            date1
-            time1
-            
+
+            warning
+            ScrollView{
+                
+                ForEach(dataDate.posts.slots, id: \.self){ data in
+                    if(dataDate.indexes.contains(data.id)){
+                        VStack(alignment: .leading){
+                            let dateString = dateToString(index: data.id - 1)
+                            date(title: dateString)
+                            
+                            source(day: Int(data.datetime[8..<10]) ?? 0)
+                        }
+                    }
+                }
+                
+            }
             Spacer()
             
             moreBtn
+            
+        }.onAppear {
+            dataDate.fetchPosts()
+            
         }
+       
+    }
+    
+    private func source(day: Int) -> some View {
+        
+        ScrollView{
+
+            VStack{
+                LazyVGrid(columns: Array(repeating: GridItem(), count: 4)){
+                    
+                    ForEach(dataDate.posts.slots, id: \.self){ post in
+                        if(Int(post.datetime[8..<10]) == day){
+                            
+                            VStack{
+                                
+                                ZStack{
+                                    time(time: post.datetime[11..<16], price: "\(post.price)₸", id: post.id)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .padding()
     }
     
     private var title: some View {
@@ -36,7 +77,7 @@ struct selectDataView: View {
     
     }
     
-    private var Preduprejdenia: some View {
+    private var warning: some View {
         HStack(alignment: .top){
             Image(systemName: "exclamationmark.warninglight.fill")
                 .foregroundColor(.orange)
@@ -61,52 +102,59 @@ struct selectDataView: View {
             .padding(.top)
         }
         .frame(maxWidth: .infinity)
-        .background(Color.brown.opacity(0.3))
+        .background(Color("beige"))
         .cornerRadius(16)
         .padding()
     }
     
-    private var date1 : some View {
-        date(title: "5 мая, пятница")
-    }
-    
-    private var time1 : some View {
-//        HStack{
-//            
-//          
-//        }
+    private func dateFormat(dateOfData: String) -> String {
+        let format = DateFormatter()
+        format.dateFormat = Date().displayFormat
         
-        time(time: "11:00", price: "4000T")
+        
+        let d = format.date(from: dateOfData)!
+            return format.string(from: d)
+    }
+  
+    
+    private func dateToString(index: Int) -> String{
+        
+        let dateString = dataDate.posts.slots[index].datetime
+        let dateFormat = DateFormatter()
+        dateFormat.locale = Locale(identifier: "ru_RU")
+        dateFormat.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let date = dateFormat.date(from: dateString)?.displayFormat ?? ""
+        
+        return date
     }
     
     private func date(title: String) -> some View {
-        Text(title)
-            
+
+         Text(title)
             .font(.system(size: 28))
             .fontWeight(.bold)
             .foregroundColor(.gray).opacity(0.8)
-            .padding()
+            .padding(.leading)
     }
     
-    private func time(time: String, price: String) -> some View{
+    private func time(time: String, price: String, id: Int) -> some View{
         Button(action: {
-            
+            self.id = id
         }, label: {
             VStack{
                 Text(time)
                     .fontWeight(.bold)
-                    .foregroundColor(.black)
-                
+                    .foregroundColor( self.id == id ? .white : .black)
+                    .padding(.top)
                 Text(price)
                     .fontWeight(.bold)
-                    .foregroundColor(.black)
+                    .foregroundColor(self.id == id ? .white : .gray)
+                    .frame(maxWidth: .infinity)
             }
+            .padding(.bottom)
         })
-        
-        .padding()
-        .background(Color.blue.opacity(0.1))
+        .background(self.id == id ? Color("MyCustomPurple") : Color.blue.opacity(0.06))
         .cornerRadius(16)
-        .padding(.leading)
     }
     
     private var moreBtn : some View = {
@@ -133,4 +181,41 @@ struct selectDataView: View {
 
 #Preview {
     selectDataView()
+}
+
+extension Date {
+    var displayFormat: String{
+        
+        let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale(identifier: "ru_RU")
+                dateFormatter.setLocalizedDateFormatFromTemplate("dMMMMEEEE")
+                return dateFormatter.string(from: self)
+    }
+}
+
+extension String {
+
+    var length: Int {
+        return count
+    }
+
+    subscript (i: Int) -> String {
+        return self[i ..< i + 1]
+    }
+
+    func substring(fromIndex: Int) -> String {
+        return self[min(fromIndex, length) ..< length]
+    }
+
+    func substring(toIndex: Int) -> String {
+        return self[0 ..< max(0, toIndex)]
+    }
+
+    subscript (r: Range<Int>) -> String {
+        let range = Range(uncheckedBounds: (lower: max(0, min(length, r.lowerBound)),
+                                            upper: min(length, max(0, r.upperBound))))
+        let start = index(startIndex, offsetBy: range.lowerBound)
+        let end = index(start, offsetBy: range.upperBound - range.lowerBound)
+        return String(self[start ..< end])
+    }
 }

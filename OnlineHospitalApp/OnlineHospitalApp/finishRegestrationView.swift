@@ -20,17 +20,16 @@ struct finishRegestrationView: View {
             
             btn
         }
-        .background(Color("Purple"))
+        .background(Color("MyCustomPurple"))
     }
     
     private let title: some View = {
         return Text("Вы записаны на прием!")
-            .frame(maxWidth: .infinity)
             .foregroundStyle(Color.white)
             .font(.system(size: 38))
             .frame(alignment: .leading)
+            .multilineTextAlignment(.leading)
             .padding()
-        
     }()
     
     private let description: some View = {

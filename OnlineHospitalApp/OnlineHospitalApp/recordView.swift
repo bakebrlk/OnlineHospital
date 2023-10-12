@@ -20,8 +20,14 @@ struct recordView: View {
         VStack(alignment: .leading){
             title
             HorizontalBtns
-            
-            recordSelfView()
+                
+            ZStack(alignment: .top){
+                recordSelfView()
+                    .opacity(checkBtn == .mySelf ? 1 : 0)
+                recordAnotherView()
+                    .opacity(checkBtn == .Another ? 1 : 0)
+            }
+
         }
     }
     

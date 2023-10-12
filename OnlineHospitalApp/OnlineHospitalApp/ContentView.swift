@@ -25,7 +25,7 @@ struct ContentView: View {
         VStack(alignment: .leading) {
             topPage
             
-            FormatView()
+            recordView()
             
             Spacer()
             
@@ -66,7 +66,7 @@ struct ContentView: View {
         
         return Text("")
                     .frame(width: 35, height: 10)
-                    .background(page.rawValue >= index.rawValue ? Color("Purple"): Color.gray.opacity(0.5))
+                    .background(page.rawValue >= index.rawValue ? Color("MyCustomPurple"): Color.gray.opacity(0.5))
                     .cornerRadius(8)
 
     }
@@ -119,7 +119,7 @@ struct ContentView: View {
             .frame(width: 194,height: 56)
             .background(
                 RoundedRectangle(cornerRadius: 30)
-                    .fill(Color("Purple"))
+                    .fill(Color("MyCustomPurple"))
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 30)

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct recordSelfView: View {
     var body: some View {
+        
         VStack(alignment: .leading){
             
             verticalInfo(title: fullNameTitle, description: fullName)
@@ -55,11 +56,15 @@ struct recordSelfView: View {
     
     private func verticalInfo(title: Text, description: Text) -> some View {
         VStack(alignment: .leading){
+            Text("")
+                .frame(maxWidth: .infinity)
             title
+
             description
                 .padding(.top, 1)
         }
-        .padding(.top)
+        .frame(maxWidth: .infinity)
+        .padding(.bottom, 5)
         .padding(.leading)
     }
     
