@@ -7,48 +7,73 @@
 
 import SwiftUI
 
+private enum variants: String{
+    case online
+    case offline
+}
+
 struct selectDataView: View {
-
     
-    @StateObject private var dataDate = PostViewModel()
+    @State private var format: variants = .online
+    
+    @StateObject private var dataDateOnline = PostViewModel(api: "https://phydoc-test-2d45590c9688.herokuapp.com/get_schedule?type=online")
+    @StateObject private var dataDateOffline = PostViewModel(api: "https://phydoc-test-2d45590c9688.herokuapp.com/get_schedule?type=offline")
+    
     @State private var id: Int = -1
-
+    
     var body: some View {
-       
         
         VStack(alignment: .leading){
             title
-
+            
             warning
-            ScrollView{
-                
-                ForEach(dataDate.posts.slots, id: \.self){ data in
-                    if(dataDate.indexes.contains(data.id)){
-                        VStack(alignment: .leading){
-                            let dateString = dateToString(index: data.id - 1)
-                            date(title: dateString)
-                            
-                            source(day: Int(data.datetime[8..<10]) ?? 0)
+            
+            selectFormat
+            
+            ZStack{
+                ScrollView{
+                    ForEach(dataDateOnline.posts.slots, id: \.self){ data in
+                        if(dataDateOnline.indexes.contains(data.id)){
+                            VStack(alignment: .leading){
+                                let dateString = dateToString(index: data.id - 1, dataDate: dataDateOnline)
+                                date(title: dateString)
+                                
+                                source(day: Int(data.datetime[8..<10]) ?? 0, dataDate: dataDateOnline)
+                            }
                         }
                     }
                 }
+                .foregroundStyle(Color.clear).opacity(format == .online ? 1 : 0)
+
+                ScrollView{
+                    ForEach(dataDateOffline.posts.slots, id: \.self){ data in
+                        if(dataDateOffline.indexes.contains(data.id)){
+                            VStack(alignment: .leading){
+                                let dateString = dateToString(index: data.id - 15, dataDate: dataDateOffline)
+                                date(title: dateString)
+                                
+                                source(day: Int(data.datetime[8..<10]) ?? 0, dataDate: dataDateOffline)
+                            }
+                        }
+                    }
+                }
+                .foregroundStyle(Color.clear).opacity(format == .offline ? 1 : 0)
                 
             }
             Spacer()
             
-            moreBtn
             
         }.onAppear {
-            dataDate.fetchPosts()
-            
+            dataDateOnline.fetchPosts()
+            dataDateOffline.fetchPosts()
         }
-       
+        
     }
     
-    private func source(day: Int) -> some View {
+    private func source(day: Int, dataDate: PostViewModel) -> some View {
         
         ScrollView{
-
+            
             VStack{
                 LazyVGrid(columns: Array(repeating: GridItem(), count: 4)){
                     
@@ -74,7 +99,7 @@ struct selectDataView: View {
             .font(.system(size: 38))
             .fontWeight(.semibold)
             .padding()
-    
+        
     }
     
     private var warning: some View {
@@ -113,11 +138,11 @@ struct selectDataView: View {
         
         
         let d = format.date(from: dateOfData)!
-            return format.string(from: d)
+        return format.string(from: d)
     }
-  
     
-    private func dateToString(index: Int) -> String{
+    
+    private func dateToString(index: Int, dataDate: PostViewModel) -> String{
         
         let dateString = dataDate.posts.slots[index].datetime
         let dateFormat = DateFormatter()
@@ -129,8 +154,8 @@ struct selectDataView: View {
     }
     
     private func date(title: String) -> some View {
-
-         Text(title)
+        
+        Text(title)
             .font(.system(size: 28))
             .fontWeight(.bold)
             .foregroundColor(.gray).opacity(0.8)
@@ -157,26 +182,50 @@ struct selectDataView: View {
         .cornerRadius(16)
     }
     
-    private var moreBtn : some View = {
+    
+     private var selectFormat : some View  {
+         HStack{
+             onlineBtn
+             offlineBtn
+         }
+         .background(
+             RoundedRectangle(cornerRadius: 16)
+                 .fill(Color.clear)
+         )
+         .overlay(
+             RoundedRectangle(cornerRadius: 16)
+                 .stroke(Color.gray, lineWidth: 1)
+         )
+         .padding()
+     }
+    
+
+    private var onlineBtn: some View {
+        variantBtns(text: "Онлайн", index: .online)
+    }
+    
+    private var offlineBtn: some View {
+        variantBtns(text: "Оффлайн", index: .offline)
+    }
+    
+    private func variantBtns(text: String, index: variants) -> some View{
         return Button(action: {
-            
+            format = index
         }, label: {
-            Text("Показать еще")
-                .frame(maxWidth: .infinity)
-                .fontWeight(.bold)
-                .foregroundColor(.black)
+            Text(text)
+                .frame(alignment: .center)
+                .font(.system(size: 16, weight: .bold))
+                .foregroundColor(format == index ? .white : .black)
                 .padding()
+                .frame(maxWidth: .infinity)
         })
-        .background(
-            RoundedRectangle(cornerRadius: 30)
-                .fill(Color.clear)
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 30)
-                .stroke(Color.gray, lineWidth: 2)
-        )
-        .padding()
-    }()
+        .background(format == index ? Color.blue : Color.white)
+        .cornerRadius(16)
+        .frame(maxWidth: .infinity)
+        .padding(5)
+    }
+    
+    
 }
 
 #Preview {

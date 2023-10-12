@@ -24,9 +24,13 @@ import Foundation
 class PostViewModel: ObservableObject {
 
     @Published var posts: SlotsResponse = SlotsResponse(slots: [])
-    @Published private var api: String = "https://phydoc-test-2d45590c9688.herokuapp.com/get_schedule?type=online"
+    @Published private var api: String
     @Published var dictionData: [Int] = []
     @Published var indexes: [Int] = []
+    
+    init(api: String) {
+        self.api = api
+    }
     
     func fetchPosts() {
         if let url = URL(string: api) {
@@ -40,7 +44,7 @@ class PostViewModel: ObservableObject {
                     let post = try JSONDecoder().decode(SlotsResponse.self, from: data)
                     DispatchQueue.main.async{
                         self?.posts = post
-                        
+                        print(post)
                         for p in post.slots{
                             
                             if(self?.dictionData.last != Int(p.datetime[8..<10]) ?? 0){
