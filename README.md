@@ -3,8 +3,8 @@ SwiftUI App
 
 
 
+https://github.com/bakebrlk/OnlineHospital/assets/119001855/55e891e7-8831-4203-b0d7-80466256a828
 
-https://github.com/bakebrlk/OnlineHospital/blob/main/Simulator%20Screen%20Recording%20-%20iPhone%2015%20Pro%20-%202023-10-13%20at%2019.04.28.mp4
 
 
 
