@@ -9,8 +9,24 @@ import SwiftUI
 
 struct confirmView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            title
+        }
     }
+    
+    private let title: some View = {
+        Text("Подтвердите \nзапись")
+            .font(.system(size: 32))
+            .frame(maxWidth: .infinity)
+            .bold()
+            
+    }()
+    
+    private let visa: some View = {
+        HStack{
+            
+        }
+    }()
 }
 
 #Preview {

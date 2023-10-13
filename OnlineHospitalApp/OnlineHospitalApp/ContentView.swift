@@ -34,6 +34,8 @@ struct ContentView: View {
     @State private var formatConsultation: variants = .none
     @State private var formatClient: variantsRecord = .mySelf
     @State private var infoClient = ["Иванов Иван","041115486195","+7 707 748 4815","ул. Гани Иляева 15"]
+    @State private var infoClientAnother = ["","","",""]
+    private var record = ""
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -42,7 +44,7 @@ struct ContentView: View {
             if(page == .format){
                 FormatView(buttonPressed: $formatConsultation)
             }else if(page == .record){
-                recordView(checkBtn: $formatClient, infoClient: $infoClient)
+                recordView(checkBtn: $formatClient, infoClient: $infoClient , infoClientAnother: $infoClientAnother)
             }else if(page == .date){
                 selectDataView()
             }else if(page == .confirm){
@@ -145,8 +147,8 @@ struct ContentView: View {
                 if(page == .format){
                     page = .record
                 }else if(page == .record){
-                    print(infoClient)
                     
+                    print(infoClient)
                     page = .date
                 }else if(page == .date){
                     page = .confirm

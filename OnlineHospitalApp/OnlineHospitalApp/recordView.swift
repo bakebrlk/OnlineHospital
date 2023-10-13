@@ -10,6 +10,7 @@ import SwiftUI
 struct recordView: View {
     @Binding var checkBtn: variantsRecord
     @Binding var infoClient: [String]
+    @Binding var infoClientAnother: [String]
     
     var body: some View {
         
@@ -20,7 +21,7 @@ struct recordView: View {
             ZStack(alignment: .top){
                 recordSelfView(infoClient: $infoClient)
                     .opacity(checkBtn == .mySelf ? 1 : 0)
-                recordAnotherView(infoClient: $infoClient)
+                recordAnotherView(infoClientAnother: $infoClientAnother)
                     .opacity(checkBtn == .Another ? 1 : 0)
             }
 

@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct recordAnotherView: View {
-    @Binding var infoClient: [String]
-    @State var infoAnother = ["", "", "", ""]
-    
+    @Binding public var infoClientAnother: [String]
+
     var body: some View {
         
         VStack(alignment: .leading){
             
             setTitleDescription(title: fullNameTitle, description: fullName)
-            
+                
             setTitleDescription(title: iinTitle, description: iin)
             
             setTitleDescription(title: numberPhoneTitle, description: numberPhone)
@@ -26,18 +25,16 @@ struct recordAnotherView: View {
             Spacer()
             
         }
+        
+        
     }
     
-    public func checkInfoClient() -> Bool{
-        if(infoAnother[0] != "" && infoAnother[1] != "" && infoAnother[2] != "" && infoAnother[3] != "" ){
-            infoClient[0] = infoAnother[0]
-            infoClient[1] = infoAnother[1]
-            infoClient[2] = infoAnother[2]
-            infoClient[3] = infoAnother[3]
-            return true
+    public func checkInfoClient() {
+//            print("Hi")
+//            if !infoAnother[0].isEmpty && !infoAnother[1].isEmpty && !infoAnother[2].isEmpty && !infoAnother[3].isEmpty {
+//                infoClient = infoAnother
+//            }
         }
-        return false
-    }
     
     private func setTitleDescription(title: Text, description: TextField<some View>) -> some View{
         
@@ -95,7 +92,7 @@ struct recordAnotherView: View {
     
     
     private func infoDescription(text: String, index: Int) -> TextField<some View>{
-        TextField(text ,text: $infoClient[index])
+        TextField(text ,text: $infoClientAnother[index])
     }
     
     private func info(text: String) -> Text{
