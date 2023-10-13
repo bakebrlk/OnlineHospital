@@ -32,7 +32,6 @@ struct recordView: View {
         Text("Выберите кого хотите записать")
             .font(.system(size: 32))
             .fontWeight(.semibold)
-            .padding()
     
     }
     

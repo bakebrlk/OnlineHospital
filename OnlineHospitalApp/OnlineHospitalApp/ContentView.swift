@@ -43,36 +43,60 @@ struct ContentView: View {
     @State var checkAnimation = false
     @State var stopAnimation = false
     @State var errorText = "Пожалуйста, выберите формат"
-    
+    @State var isLoding = false
     
     var body: some View {
-        VStack(alignment: .leading) {
-            topPage
-            
-            if(page == .format){
-                FormatView(buttonPressed: $formatConsultation)
-            }else if(page == .record){
-                recordView(checkBtn: $formatClient, infoClient: $infoClient , infoClientAnother: $infoClientAnother)
-            }else if(page == .date){
-                selectDataView(format: $formatConsultation, id: $id, time: $time, date: $date, price: $price)
-            }else if(page == .confirm){
-                confirmView(price: price, formatConsultation: formatConsultation, time: time, date: date, nameClient: getNameClient())
-            }else if(page == .successfully){
-                finishRegestrationView(page: $page)
+        ZStack{
+            if(isLoding){
+                Color(.black).opacity(isLoding ? 0.1 : 0)
+                    .ignoresSafeArea()
             }
-            Spacer()
-            
-            if(stopAnimation){
-                errorAnimation()
-                    .opacity(checkAnimation ? 1 : 0)
+            VStack(alignment: .leading) {
+                topPage
                 
+                if(page == .format){
+                    FormatView(buttonPressed: $formatConsultation)
+                }else if(page == .record){
+                    recordView(checkBtn: $formatClient, infoClient: $infoClient ,infoClientAnother: $infoClientAnother)
+                    
+                    
+                }else if(page == .date){
+                    ZStack{
+                        
+                        selectDataView(format: $formatConsultation, id: $id, time: $time, date: $date, price: $price)
+                            .onAppear {
+                                startLoding()
+                            }
+                        if(isLoding){
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                                .scaleEffect(3)
+                        }
+                    }
+                }else if(page == .confirm){
+                    confirmView(price: price, formatConsultation: $formatConsultation, time: time, date: date, nameClient: getNameClient())
+                }else if(page == .successfully){
+                    finishRegestrationView(page: $page)
+                }
+                Spacer()
+                
+                if(stopAnimation){
+                    errorAnimation()
+                        .opacity(checkAnimation ? 1 : 0)
+                    
+                }
+                btns
             }
-            btns
+            .padding()
         }
-        .padding()
     }
     
-
+    private func startLoding(){
+        isLoding = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+            isLoding = false
+        }
+    }
   
     private func getNameClient() -> String {
         return formatClient == .mySelf ? infoClient[0] : infoClientAnother[0]

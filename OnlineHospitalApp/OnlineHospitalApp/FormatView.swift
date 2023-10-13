@@ -47,7 +47,7 @@ struct FormatView: View {
     }
     
     private var callToTheHouse: some View{
-        functional(title: "Вызвать на дом", description: "Врач сам приедет к вам домой в указанное время и дату.", variant: .offline)
+        functional(title: "Вызвать на дом", description: "Врач сам приедет к вам домой в указанное время и дату.", variant: .home)
     }
     
         

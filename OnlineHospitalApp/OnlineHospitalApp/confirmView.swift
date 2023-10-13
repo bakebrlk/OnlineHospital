@@ -10,7 +10,7 @@ import SwiftUI
 struct confirmView: View {
     
     var price: Int
-    var formatConsultation: variants
+    @Binding var formatConsultation: variants
     var time: String
     var date: String
     var nameClient: String
@@ -120,7 +120,7 @@ struct confirmView: View {
     private var description: some View {
         VStack(alignment: .leading){
             getDescription(text: "Формат приема:", font: .thin, size: 16)
-            getDescription(text: formatConsultation == .online ? "Онлайн-консультация" : "Онлайн-консультация", font: .bold, size: 18)
+            getDescription(text: formatConsultation == .online ? "Онлайн-консультация" : "Оффлайн-консультация", font: .bold, size: 18)
                 .padding(.bottom)
             getDescription(text: "Пациент:", font: .thin, size: 16)
             getDescription(text: nameClient, font: .bold, size: 18)
