@@ -242,7 +242,7 @@ struct ContentView: View {
                     }
                 }else if(page == .date){
                     errorText = "Пожалуйста, выберите время!"
-                    if(id != -1){
+                    if((formatConsultation == .online && id > -1) || (formatConsultation == .offline && id > 14)){
                         page = .confirm
                     }else{
                         checkAnimation.toggle()

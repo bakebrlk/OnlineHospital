@@ -29,7 +29,7 @@
 		8B4493152AD2FB310077A415 /* selectDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectDataView.swift; sourceTree = "<group>"; };
 		8B4493172AD30E6B0077A415 /* finishRegestrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finishRegestrationView.swift; sourceTree = "<group>"; };
 		8B4AA5F12AD6A7D20013D991 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
-		8BCDDF342ACEC7DC00D09205 /* OnlineHospitalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlineHospitalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BCDDF342ACEC7DC00D09205 /* Хранитель здоровья.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Хранитель здоровья.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BCDDF372ACEC7DC00D09205 /* OnlineHospitalAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineHospitalAppApp.swift; sourceTree = "<group>"; };
 		8BCDDF392ACEC7DC00D09205 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8BCDDF3B2ACEC7DD00D09205 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -59,7 +59,7 @@
 		8BCDDF352ACEC7DC00D09205 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8BCDDF342ACEC7DC00D09205 /* OnlineHospitalApp.app */,
+				8BCDDF342ACEC7DC00D09205 /* Хранитель здоровья.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,9 +94,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8BCDDF332ACEC7DC00D09205 /* OnlineHospitalApp */ = {
+		8BCDDF332ACEC7DC00D09205 /* Хранитель здоровья */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8BCDDF422ACEC7DD00D09205 /* Build configuration list for PBXNativeTarget "OnlineHospitalApp" */;
+			buildConfigurationList = 8BCDDF422ACEC7DD00D09205 /* Build configuration list for PBXNativeTarget "Хранитель здоровья" */;
 			buildPhases = (
 				8BCDDF302ACEC7DC00D09205 /* Sources */,
 				8BCDDF312ACEC7DC00D09205 /* Frameworks */,
@@ -106,9 +106,9 @@
 			);
 			dependencies = (
 			);
-			name = OnlineHospitalApp;
+			name = "Хранитель здоровья";
 			productName = OnlineHospitalApp;
-			productReference = 8BCDDF342ACEC7DC00D09205 /* OnlineHospitalApp.app */;
+			productReference = 8BCDDF342ACEC7DC00D09205 /* Хранитель здоровья.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -140,7 +140,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8BCDDF332ACEC7DC00D09205 /* OnlineHospitalApp */,
+				8BCDDF332ACEC7DC00D09205 /* Хранитель здоровья */,
 			);
 		};
 /* End PBXProject section */
@@ -369,7 +369,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8BCDDF422ACEC7DD00D09205 /* Build configuration list for PBXNativeTarget "OnlineHospitalApp" */ = {
+		8BCDDF422ACEC7DD00D09205 /* Build configuration list for PBXNativeTarget "Хранитель здоровья" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8BCDDF432ACEC7DD00D09205 /* Debug */,
