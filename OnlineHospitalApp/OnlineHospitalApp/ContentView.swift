@@ -35,7 +35,15 @@ struct ContentView: View {
     @State private var formatClient: variantsRecord = .mySelf
     @State private var infoClient = ["Иванов Иван","041115486195","+7 707 748 4815","ул. Гани Иляева 15"]
     @State private var infoClientAnother = ["","","",""]
+    @State private var price: Int = 0
+    @State private var time: String = ""
+    @State private var date: String = ""
     private var record = ""
+    @State var id = -1
+    @State var checkAnimation = false
+    @State var stopAnimation = false
+    @State var errorText = "Пожалуйста, выберите формат"
+    
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -46,21 +54,29 @@ struct ContentView: View {
             }else if(page == .record){
                 recordView(checkBtn: $formatClient, infoClient: $infoClient , infoClientAnother: $infoClientAnother)
             }else if(page == .date){
-                selectDataView()
+                selectDataView(format: $formatConsultation, id: $id, time: $time, date: $date, price: $price)
             }else if(page == .confirm){
-                confirmView()
+                confirmView(price: price, formatConsultation: formatConsultation, time: time, date: date, nameClient: getNameClient())
             }else if(page == .successfully){
-                finishRegestrationView()
+                finishRegestrationView(page: $page)
             }
             Spacer()
             
+            if(stopAnimation){
+                errorAnimation()
+                    .opacity(checkAnimation ? 1 : 0)
+                
+            }
             btns
         }
         .padding()
     }
     
-    
+
   
+    private func getNameClient() -> String {
+        return formatClient == .mySelf ? infoClient[0] : infoClientAnother[0]
+    }
     private var topPage: some View{
         
         HStack{
@@ -112,10 +128,13 @@ struct ContentView: View {
                 print("Back")
                 
                 if(page == .record){
+                    errorText = "Пожалуйста, выберите формат"
                     page = .format
                 }else if(page == .date){
+                    errorText = "Пожалуйста, напишите полные данные"
                     page = .record
                 }else if(page == .confirm){
+                    errorText = "Пожалуйста, выберите время!"
                     page = .date
                 }else if(page == .successfully){
                     page = .confirm
@@ -142,22 +161,75 @@ struct ContentView: View {
             )
         }
     
+    private func errorAnimation() -> some View {
+        HStack{
+            Spacer()
+        
+            Text(errorText)
+                .bold()
+                .foregroundStyle(Color.red)
+                .padding()
+                .background(Color.blue.opacity(0.1))
+                .cornerRadius(16)
+                .offset(y: bounceAnimation())
+                .onAppear {
+                    startBounceAnimation()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.9) {
+                        checkAnimation.toggle()
+                        stopAnimation.toggle()
+                    }
+                }
+                
+                
+            Spacer()
+        }
+    }
+    
+    private func bounceAnimation() -> CGFloat {
+            return checkAnimation ? -30 : 0
+    }
+    
+    private func startBounceAnimation() {
+            withAnimation(Animation.easeInOut(duration: 0.5).repeatForever( autoreverses: true)) {
+                checkAnimation.toggle()
+            }
+    }
+    
     private var btnNext: some View {
             Button(action: {
                 if(page == .format){
-                    page = .record
+                    if(formatConsultation != .none){
+                        errorText = "Пожалуйста, напишите полные данные"
+                        page = .record
+                    }else{
+                        checkAnimation.toggle()
+                        stopAnimation.toggle()
+                    }
                 }else if(page == .record){
-                    
-                    print(infoClient)
-                    page = .date
+                    if(formatClient == .Another){
+                        if(!infoClientAnother[0].isEmpty && !infoClientAnother[1].isEmpty && !infoClientAnother[2].isEmpty && !infoClientAnother[3].isEmpty){
+                            page = .date
+                        }else{
+                            checkAnimation.toggle()
+                            stopAnimation.toggle()
+                        }
+                    }else{
+                        page = .date
+                    }
                 }else if(page == .date){
-                    page = .confirm
+                    errorText = "Пожалуйста, выберите время!"
+                    if(id != -1){
+                        page = .confirm
+                    }else{
+                        checkAnimation.toggle()
+                        stopAnimation.toggle()
+                    }
                 }else if(page == .confirm){
                     page = .successfully
                 }
             }, label: {
                 if(page == .confirm){
-                    NavigationLink(destination: finishRegestrationView().navigationBarHidden(true)){
+                    NavigationLink(destination: finishRegestrationView(page: $page).navigationBarHidden(true)){
                         Text("Дальше")
                             .foregroundStyle(Color.white)
                             .font(.system(size: 18))

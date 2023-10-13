@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct finishRegestrationView: View {
+    
+    @Binding var page: pages
+    
     var body: some View {
         VStack(alignment: .leading){
             Spacer()
@@ -41,7 +44,7 @@ struct finishRegestrationView: View {
     
     private var btn: some View {
         Button(action: {
-            print("next")
+            page = .format
         }, label: {
             Text("Хорошо")
                 .foregroundStyle(Color.black)
@@ -62,6 +65,4 @@ struct finishRegestrationView: View {
     }
 }
 
-#Preview {
-    finishRegestrationView()
-}
+

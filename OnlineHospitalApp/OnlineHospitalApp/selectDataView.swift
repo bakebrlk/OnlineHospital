@@ -9,12 +9,15 @@ import SwiftUI
 
 struct selectDataView: View {
     
-    @State private var format: variants = .online
+    @Binding var format: variants
     
     @StateObject private var dataDateOnline = PostViewModel(api: "https://phydoc-test-2d45590c9688.herokuapp.com/get_schedule?type=online")
     @StateObject private var dataDateOffline = PostViewModel(api: "https://phydoc-test-2d45590c9688.herokuapp.com/get_schedule?type=offline")
     
-    @State private var id: Int = -1
+    @Binding var id: Int
+    @Binding var time: String
+    @Binding var date: String
+    @Binding var price: Int
     
     var body: some View {
         
@@ -155,6 +158,9 @@ struct selectDataView: View {
     private func time(time: String, price: String, id: Int) -> some View{
         Button(action: {
             self.id = id
+            self.time = time
+            date = getDate(index: format == .offline ? id-15 : id-1, dataDate: format == .offline ? dataDateOffline : dataDateOnline)
+            self.price = Int(price[0..<price.count-1]) ?? 0
         }, label: {
             VStack{
                 Text(time)
@@ -172,11 +178,20 @@ struct selectDataView: View {
         .cornerRadius(16)
     }
     
+    private func getDate(index: Int, dataDate: PostViewModel) -> String {
+        let dateString = dataDate.posts.slots[index].datetime
+        let dateFormat = DateFormatter()
+        dateFormat.locale = Locale(identifier: "ru_RU")
+        dateFormat.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let date = dateFormat.date(from: dateString)?.dateFormat ?? ""
+        return date
+    }
+    
 }
 
-#Preview {
-    selectDataView()
-}
+//#Preview {
+//    selectDataView()
+//}
 
 extension Date {
     var displayFormat: String{
@@ -184,6 +199,13 @@ extension Date {
         let dateFormatter = DateFormatter()
                 dateFormatter.locale = Locale(identifier: "ru_RU")
                 dateFormatter.setLocalizedDateFormatFromTemplate("dMMMMEEEE")
+                return dateFormatter.string(from: self)
+    }
+    
+    var dateFormat: String{
+        let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale(identifier: "ru_RU")
+                dateFormatter.setLocalizedDateFormatFromTemplate("dMMMM")
                 return dateFormatter.string(from: self)
     }
 }
